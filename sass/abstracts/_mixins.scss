@@ -12,3 +12,36 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+/* MEDIA QUERY MANAGER */
+/*
+0 - 600px:          Phone
+600px - 900px:      Tablet portrait
+900px - 1200px:     Tablet landscape
+[1200px - 1800px]:  This is where our normal style is applied
+1800px +            Big desktop
+
+$breakpoint arguments
+- phone
+- tab-port
+- tab-land
+- big-desk
+
+1em = 16px
+*/
+
+@mixin respond($breakpoint) {
+  @if map-get($breakpoint-map, $breakpoint) {
+
+    $query: map-get($breakpoint-map, $breakpoint);
+
+    @if $query < em(1600px) {
+      @media (max-width: $query) { @content };
+    } @else {
+      @media (min-width: $query) { @content };
+    }
+
+  } @else {
+    @error 'Respond mixin: invalid argument';
+  }
+}
