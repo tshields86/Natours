@@ -22,7 +22,7 @@
   }
 
   &__text-box {
-    @include center-center;
+    @include absCenter;
     top: 40%;
     text-align: center;
   }
