@@ -38,9 +38,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
     $query: map-get($breakpoint-map, $breakpoint);
 
     @if $query < em(1600px) {
-      @media (max-width: $query) { @content };
+      @media only screen and (max-width: $query) { @content };
     } @else {
-      @media (min-width: $query) { @content };
+      @media only screen and (min-width: $query) { @content };
     }
 
   } @else {
